@@ -13,21 +13,26 @@ from app.prompt import load_prompt
 SPROMPT = "default"
 VOICE_FILE = "fem1"
 LLM_MODEL = "llama3.1:latest"  # llama 3.1 8B is great a following directions, so I default to that; YMMV
+DEFAULT_TEMPERATURE = 0.8
 
+temperature = DEFAULT_TEMPERATURE  # can be overriden by prompt file
 stream = None
-
 messages = []
 
 
 def process_text(text):
-    global messages
+    global messages, temperature
 
     print(f"\n----\n[red]User:[/red] {text}")
 
     # tack it on the end, send it up
     messages.append({"role": "user", "content": text})
 
-    response = chat(LLM_MODEL, messages=messages)
+    response = chat(
+        LLM_MODEL,
+        messages=messages,
+        options={"temperature": temperature, "num_ctx": 65535},
+    )
 
     # tack their response onto the end for the next go-around
     messages.append(response["message"])
@@ -59,7 +64,9 @@ if __name__ == "__main__":
 
     voice = sprompt["voice"] or VOICE_FILE
 
-    if not sprompt["user"]:
+    temperature = sprompt["temperature"] or DEFAULT_TEMPERATURE
+
+    if not "user" in sprompt:
         user = load_prompt("_user.default")
         user = user["prompt"]
     else:
@@ -75,6 +82,8 @@ if __name__ == "__main__":
     )
 
     print(f"- Using prompt: `{SPROMPT}`")
+
+    ## -------------------
 
     engine = CoquiEngine(voice=f"voices/{voice}.wav")
 
