@@ -13,6 +13,7 @@ I am offering no support for this project.
 ## Notes and Things To Fix
 
 - Missing: you cannot interrupt the response.
+- If you pause too long while talking it will auto-submit and cut you off. But once you begin speaking again, while it's processing, it will treat that like the next bit of dialogue. This is a bug.
 - This could use a cleaner TUI.
 - Proper command line arguments: currently you just edit the constants at the top of `main.py`.
 
