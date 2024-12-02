@@ -1,6 +1,6 @@
-# Aimee
+# AImee
 
-Aimee is a realtime LLM conversation bot using Ollama, RealtimeTTS and RealtimeSTT, all of which are built on top of OTHER projects. It's just shoulders all the way down.
+AImee is a realtime LLM conversation bot using Ollama, RealtimeTTS and RealtimeSTT, all of which are built on top of OTHER projects. It's just shoulders all the way down.
 
 This is a terminal app that listens to the currently enabled microphone, transcribes your audio, passes it through to an LLM (maintaining a context window), and then speaks the response.
 
