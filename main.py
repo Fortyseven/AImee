@@ -10,7 +10,7 @@ from ollama import chat
 from app.prompt import load_prompt
 
 
-SPROMPT = "lcars"
+SPROMPT = "default"
 VOICE_FILE = "fem1"
 LLM_MODEL = "llama3.1:latest"  # llama 3.1 8B is great a following directions, so I default to that; YMMV
 
