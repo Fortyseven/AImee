@@ -32,7 +32,7 @@ I am offering no support for this project.
 
 ## Requirements
 
-- Python >= 3.12
+- Python >= 3.12 (this is not a hard requirement; just what I used)
 
 ## Usage
 
